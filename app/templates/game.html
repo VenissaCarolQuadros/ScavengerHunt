@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+    <div class = container-fluid style="background-image: url('/static/assets/plain.jpg'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="content" style="position:absolute;">
+        <!--<div id = images></div>
+        <span id="writeup"></span>-->
+        <div id="clue"></div>
+    </div>
+    
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+var user = "{{ user }}";
+    </script>
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %}

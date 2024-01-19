@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+    <div class = container-fluid style="background-image: url('/static/assets/plain.jpg'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="content" style="position:absolute;">
+        <div class="row">
+            <div class="col-lg">
+        <form method="post" action="" id="buttons">
+            <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+            {% for p in pending %}
+            <div class="row">
+                <span>{{p}}</span><input type="submit" class="btn btn-success" name={{p}} value="Admit">
+            </div>
+            {% endfor %}
+        </form>
+        <form method="post" action="" id="teams">
+            <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+            {% for p in accepted %}
+            <div class="row">
+                <span>{{p}}</span><input type="number" class="form-control" name={{p}} placeholder="Assign Team">
+            </div>
+            {% endfor %}
+            <input type="submit" class="btn btn-success" name="start_game" value="Start game">
+        </form>
+        </div>
+        <div class="col-lg">
+            {{ render_form(file_form) }}
+        </div>
+    </div>
+    </div>    
+    </div>
+{% endblock %}
+
+{% block script %}
+<script> var pending = {{ pending }};</script>
+<script src="{{ url_for('static', filename='accept.js') }}"></script>
+{% endblock %}

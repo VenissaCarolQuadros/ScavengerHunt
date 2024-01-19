@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+    <div class = container-fluid style="background-image: url('/static/assets/background.jpg'); height: 100vh; background-position: center;">
+    <div class="content" style="position:absolute;top:50%;left:40%;">
+        <span>You're in! Waiting for the game to start...</span>
+    </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>var user = "{{ user }}";</script>
+<script src="{{ url_for('static', filename='start.js') }}"></script>
+{% endblock %}
